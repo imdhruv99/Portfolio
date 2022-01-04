@@ -7,7 +7,8 @@ const Header = () => {
                 <div className='row'>
                     <div className='col-12 col-lg-6 header-left-side d-flex justify-content-center flex-column align-items-start'>
                         <h1 className='display-2'>Dhruv Prajapati</h1>
-                        <p className='main-hero-para'>hello World is the best thing
+                        <p className='main-hero-para'>A Full Stack Developer based in Ahmedabad, India.<br />
+                        I enjoy building small sites to rich powerfull Machine Learning application.
                         </p>
                     </div>
                     <div className='col-12 col-lg-6 header-right-side d-flex justify-content-center align-items-center'>
