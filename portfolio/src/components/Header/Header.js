@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Header = () => {
     return (
         <header>
@@ -8,11 +9,11 @@ const Header = () => {
                     <div className='col-12 col-lg-6 header-left-side d-flex justify-content-center flex-column align-items-start'>
                         <h1 className='display-2'>Dhruv Prajapati</h1>
                         <p className='main-hero-para'>A Full Stack Developer based in Ahmedabad, India.<br />
-                        I enjoy building small sites to rich powerfull Machine Learning application.
+                        I enjoy building small sites to rich powerfull <br/> Full Stack Web application.
                         </p>
                     </div>
-                    <div className='col-12 col-lg-6 header-right-side d-flex justify-content-center align-items-center'>
-                        <img alt="Dhruv Prajapati" src='01.jpg' className='img-fluid'></img>
+                    <div className='col-12 col-lg-6 header-right-side d-flex justify-content-center align-items-center main-herosection-images'>
+                        <img src='/images/01.jpeg'  className='img-fluid'/>
                     </div>
                 </div>
             </section>

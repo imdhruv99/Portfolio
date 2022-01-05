@@ -5,9 +5,7 @@ navbar css style
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .navbar-bg {
-    background-color: var(
-        --bgcolor
-    );
+    background-color: #ffffff;
     padding: 2rem 0;
     z-index: 99;
     position: relative;
@@ -30,8 +28,6 @@ navbar css style
 }
 
 .navbar li a:hover {
-    color: var(
-        --primary-color
-    ) !important;
+    color: #062e3d !important;
     text-shadow: 0 0.2rem 0.3rem #d4d4d4;
 }

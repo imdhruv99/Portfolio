@@ -1,0 +1,33 @@
+header {
+    background-color: #ffffff; 
+    min-height: 100vh;
+    width: 100%;
+}
+
+.main-hero-container {
+    height: 80vh;
+    display: flex;
+}
+
+.main-hero-container h1 {
+    text-transform: capitalize;
+    font-weight: bolder;
+    font-size: 7.5rem;
+}
+
+.main-hero-para {
+    font-size: 1.5rem;
+    color: #0000008c;
+    margin: 3rem 0 5rem 0;
+    font-weight: lighter;
+    width: 75%;
+}
+
+.main-herosection-images img{
+    width: 55%;
+    height: 75%;
+    margin-top: 10rem;
+    box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.25);
+    border-radius: 1.5rem;
+    position: relative;
+}
