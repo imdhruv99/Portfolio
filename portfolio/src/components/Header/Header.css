@@ -16,7 +16,7 @@ header {
 }
 
 .main-hero-para {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #0000008c;
     margin: 3rem 0 5rem 0;
     font-weight: lighter;
@@ -24,7 +24,7 @@ header {
 }
 
 .main-herosection-images img{
-    width: 55%;
+    width: 52%;
     height: 75%;
     margin-top: 10rem;
     box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.25);

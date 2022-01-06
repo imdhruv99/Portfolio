@@ -22,12 +22,12 @@ navbar css style
 }
 
 .navbar li a {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: lighter;
     position: relative;
 }
 
 .navbar li a:hover {
-    color: #062e3d !important;
+    color: #1a1a1a !important;
     text-shadow: 0 0.2rem 0.3rem #d4d4d4;
 }

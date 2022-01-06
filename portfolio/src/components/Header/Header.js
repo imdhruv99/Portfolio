@@ -1,5 +1,6 @@
 import React from 'react';
-
+import SocialMedia from '../SocialMedia/SocialMedia';
+import  '../SocialMedia/SocialMedia.css';
 
 const Header = () => {
     return (
@@ -11,9 +12,10 @@ const Header = () => {
                         <p className='main-hero-para'>A Full Stack Developer based in Ahmedabad, India.<br />
                         I enjoy building small sites to rich powerfull <br/> Full Stack Web application.
                         </p>
+                        <SocialMedia />
                     </div>
                     <div className='col-12 col-lg-6 header-right-side d-flex justify-content-center align-items-center main-herosection-images'>
-                        <img src='/images/01.jpeg'  className='img-fluid'/>
+                        <img src='/images/01.jpeg' alt='Dhruv Prajapati' className='img-fluid'/>
                     </div>
                 </div>
             </section>
