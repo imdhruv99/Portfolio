@@ -17,11 +17,11 @@ a.twitter {
 }
 
 a.instagram {
-    color: black;
+    color: #e4405f;
 }
 
 a.github {
-    color: black;
+    color: #333333;
 }
 
 a.linkedin {
@@ -30,4 +30,12 @@ a.linkedin {
 
 a.googleplus {
     color: #ea4335;
+}
+
+a.medium {
+    color: #333333;
+}
+
+a.dev {
+    color: #192d47;
 }
