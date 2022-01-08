@@ -1,0 +1,11 @@
+.footer-text {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333333  ;
+}
+
+.footer-div {
+    margin-top: 2rem;
+}
