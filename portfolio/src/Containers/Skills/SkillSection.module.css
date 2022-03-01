@@ -1,0 +1,10 @@
+.box {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 30rem;
+  height: 300px;
+}
+.box.change {
+  flex-direction: row-reverse;
+}

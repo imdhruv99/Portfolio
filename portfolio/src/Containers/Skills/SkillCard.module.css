@@ -1,0 +1,10 @@
+.section {
+  height: 168px;
+  width: 70%;
+  border-radius: nullpx;
+}
+.mainTitle {
+  font-size: 30px;
+  font-weight: 500;
+  width: 100%;
+}
