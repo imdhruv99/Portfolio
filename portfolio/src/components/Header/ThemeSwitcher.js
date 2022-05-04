@@ -7,6 +7,9 @@ const ThemeSwitcher = () => {
         <input type="checkbox" id="switcher" />
         <span className="slider round"></span>
       </label>
+      {/* <div id="toggle">
+      <i className="indiator"></i>
+    </div> */}
     </div>
   );
 };

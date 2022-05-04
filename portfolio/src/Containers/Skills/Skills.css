@@ -1,4 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Sura");
+
 .main-title {
   text-align: center;
-  padding-top: 18px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 57px;
+  font-family: "Sura", sans-serif;
 }

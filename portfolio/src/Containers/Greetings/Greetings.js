@@ -5,14 +5,21 @@ import SocialMedia from "../SocialMedia/SocialMedia";
 import Container from "../../components/Container";
 
 import "./Greetings.css";
+import styled from "styled-components";
 
-const Greetings = () => {
+const Greetings = (props) => {
+  const { theme } = props;
+
+  const Title = styled.h1`
+    color: ${theme !== "light" && "white"};
+  `;
+
   return (
-    <Container>
+    <Container theme={theme}>
       <div className="Intro-wrapper">
         <div className="introduction">
-          <h1>{greeting.title}</h1>
-          <ParagraphTexts className={"info"}>{greeting.summary}</ParagraphTexts>
+          <Title>{greeting.title}</Title>
+          <ParagraphTexts id={"info"}>{greeting.summary}</ParagraphTexts>
           <SocialMedia />
         </div>
         <img className="image" src={Image} alt="Dhruv_Image" />

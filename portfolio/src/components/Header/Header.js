@@ -1,11 +1,15 @@
 import "./Header.css";
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = (props) => {
+  const { theme, setTheme } = props;
+
   return (
     <div className="navigation">
-      <div className="logo">Dhruv Prajapati</div>
-      <Nav />
+      <div className="logo" style={{ color: theme !== "light" && "white" }}>
+        Dhruv Prajapati
+      </div>
+      <Nav theme={theme} setTheme={setTheme} />
     </div>
   );
 };

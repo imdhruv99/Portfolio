@@ -2,7 +2,9 @@ import { Link } from "react-scroll";
 import "./Header.css";
 import ThemeSwitcher from "./ThemeSwitcher";
 
-const Nav = () => {
+const Nav = (props) => {
+  const { theme, setTheme } = props;
+
   return (
     <div className="navMenu">
       <ul>
@@ -22,7 +24,7 @@ const Nav = () => {
           <Link to="Contact">Contact Me</Link>
         </li>
         <li>
-          <ThemeSwitcher />
+          <ThemeSwitcher theme={theme} setTheme={setTheme} />
         </li>
       </ul>
     </div>
