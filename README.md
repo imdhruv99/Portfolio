@@ -26,6 +26,10 @@
         ```
         .\vcpkg install wt:x64-windows
         ```
+    -   Install `cmake`
+        ```
+        choco install cmake
+        ```
 
 -   #### Ubuntu
 
@@ -45,6 +49,10 @@
     -   Install `wt` framework
         ```
         sudo apt install witty witty-dev
+        ```
+    -   Install `cmake`
+        ```
+        sudo apt-get install cmake3
         ```
 
 -   #### MacOs
@@ -68,6 +76,10 @@
     -   Install `wt` framework
         ```
         brew install wt
+        ```
+    -   Install `cmake`
+        ```
+        brew install cmake
         ```
 
 ### VSCode Extensions
@@ -111,3 +123,24 @@
         ├── Theme.cpp
         └── Theme.hpp
 ```
+
+### Build the Project
+
+-   Go the build directory and run cmake
+    ```
+    cd build
+    ```
+    ```
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug
+    ```
+    ```
+    cmake --build . --config Debug
+    ```
+
+### Run the Project
+
+-   Run below command to run the project
+
+    ```
+    ./build/Debug/cpp-portfolio.exe --docroot . --http-address 0.0.0.0 --http-port 8080
+    ```
