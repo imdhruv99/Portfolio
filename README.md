@@ -75,3 +75,39 @@
 -   C/C++ Extension Pack (Microsoft)
 -   CMake Tools
 -   CMake Language Support
+
+### Current Folder Structure
+
+```
+.
+├── CMakeLists.txt                  # Main CMake configuration
+├── .gitignore                      # Git ignore file
+├── README.md                       # Project documentation
+├── assets                          # Static assets (images, fonts)
+│   ├── fonts
+│   │   └── sample
+│   └── images
+│       └── sample
+├── build                           # Build directory (git-ignored)
+├── config                          # Configuration files
+│   └── wt_config.xml
+└── src                             # Source files
+    ├── components                  # Reusable UI components
+    │   ├── Footer
+    │   │   ├── Footer.cpp
+    │   │   └── Footer.hpp
+    │   └── Header
+    │       ├── Header.cpp
+    │       └── Header.hpp
+    ├── main.cpp                    # Application entry point
+    ├── pages
+    │   ├── HomePage
+    │   │   ├── HomePage.cpp
+    │   │   └── HomePage.hpp
+    │   └── ProjectsPage
+    │       ├── ProjectsPage.cpp
+    │       └── ProjectsPage.hpp
+    └── utils                       # Utility functions and helpers
+        ├── Theme.cpp
+        └── Theme.hpp
+```
