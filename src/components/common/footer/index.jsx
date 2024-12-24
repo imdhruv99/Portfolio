@@ -89,18 +89,17 @@ const Footer = () => {
         }
     };
 
-    // Scale calculation
     const getScale = (itemIndex) => {
         if (mousePosition === null || !navRef.current) return 1;
 
-        const itemWidth = 2.5; // width in rem
-        const itemPosition = itemWidth * itemIndex;
-        const distance = Math.abs(mousePosition / 16 - itemPosition);
-        const maxScale = 2; // Increased maximum scale
-        const scaleRange = 1.5; // Reduced range for more dramatic effect
+        const itemWidthRem = 2.5; // width in rem
+        const itemCenter = (itemIndex + 0.5) * itemWidthRem; // Icon center in rem
+        const distance = Math.abs(mousePosition / 16 - itemCenter); // Mouse distance in rem
+        const maxScale = 1.5; // Maximum scaling factor
+        const scaleRange = 2; // Range for scaling effect (adjust for spread)
 
-        if (distance > scaleRange) return 1;
-        return 1 + (maxScale - 1) * Math.pow(1 - distance / scaleRange, 2);
+        if (distance > scaleRange) return 1; // No scaling beyond range
+        return 1 + (maxScale - 1) * (1 - distance / scaleRange); // Quadratic falloff
     };
 
     return (
@@ -127,7 +126,7 @@ const Footer = () => {
                             key={item.id}
                             className="nav-item"
                             style={{
-                                '--scale': getScale(index, navItems.length),
+                                '--scale': getScale(index),
                             }}
                             onMouseEnter={() => setShowTooltip(item.id)}
                             onMouseLeave={() => setShowTooltip('')}
