@@ -52,6 +52,7 @@ nav {
     height: 1.5rem;
     background-color: rgba(128, 128, 128, 0.2);
     margin: 0 0.25rem;
+    align-self: center;
 }
 
 .nav-item:hover .icon-background {
@@ -101,14 +102,14 @@ nav {
 
 .tooltip {
     position: absolute;
-    top: -2.5rem;
+    top: -2rem;
     left: 50%;
     transform: translateX(-50%);
     background: var(--tooltip-bg);
     color: var(--tooltip-text);
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     white-space: nowrap;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     pointer-events: none;
@@ -196,7 +197,7 @@ nav {
     }
 
     .tooltip {
-        font-size: 1.125rem;
-        top: -3rem;
+        font-size: 1rem;
+        top: -2.5rem;
     }
 }
