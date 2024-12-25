@@ -11,6 +11,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@phosphor-icons/react": "^2.1.7",
         "@swc/core": "^1.10.1",
         "@vitejs/plugin-react": "^4.3.4",
         "react": "^18.3.1",
