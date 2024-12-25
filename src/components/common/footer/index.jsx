@@ -1,8 +1,6 @@
 import './footer.css';
-
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import {
     House,
     Briefcase,
@@ -58,20 +56,35 @@ const navItems = [
 const Footer = () => {
     const [showTooltip, setShowTooltip] = useState('');
     const [isDarkTheme, setIsDarkTheme] = useState(true);
-    const [mousePosition, setMousePosition] = useState(null);
     const navRef = useRef(null);
+    const itemsRef = useRef([]);
     const navigate = useNavigate();
 
-    const handleMouseMove = (e) => {
-        if (navRef.current) {
-            const rect = navRef.current.getBoundingClientRect();
-            setMousePosition(e.clientX - rect.left);
-        }
+    const resetIcons = () => {
+        itemsRef.current.forEach((item) => {
+            if (item) {
+                item.style.transform = 'scale(1) translateY(0)';
+            }
+        });
     };
 
-    const handleMouseLeave = () => {
-        setMousePosition(null);
-        setShowTooltip('');
+    const focusIcon = (index) => {
+        resetIcons();
+        const transformations = [
+            { offset: -2, scale: 1.1, translateY: 0 },
+            { offset: -1, scale: 1.2, translateY: -6 },
+            { offset: 0, scale: 1.5, translateY: -10 },
+            { offset: 1, scale: 1.2, translateY: -6 },
+            { offset: 2, scale: 1.1, translateY: 0 },
+        ];
+
+        transformations.forEach(({ offset, scale, translateY }) => {
+            const itemIndex = index + offset;
+            const item = itemsRef.current[itemIndex];
+            if (item && !navItems[itemIndex]?.type) {
+                item.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+            }
+        });
     };
 
     const toggleTheme = () => {
@@ -89,19 +102,6 @@ const Footer = () => {
         }
     };
 
-    const getScale = (itemIndex) => {
-        if (mousePosition === null || !navRef.current) return 1;
-
-        const itemWidthRem = 2.5; // width in rem
-        const itemCenter = (itemIndex + 0.5) * itemWidthRem; // Icon center in rem
-        const distance = Math.abs(mousePosition / 16 - itemCenter); // Mouse distance in rem
-        const maxScale = 1.5; // Maximum scaling factor
-        const scaleRange = 2; // Range for scaling effect (adjust for spread)
-
-        if (distance > scaleRange) return 1; // No scaling beyond range
-        return 1 + (maxScale - 1) * (1 - distance / scaleRange); // Quadratic falloff
-    };
-
     return (
         <div
             className={`footer-nav ${isDarkTheme ? 'dark' : 'light'}`}
@@ -110,26 +110,25 @@ const Footer = () => {
                 '--tooltip-text': isDarkTheme ? '#ffffff' : '#000000',
                 '--nav-bg': isDarkTheme ? '#1a1a1a' : '#f5f5f5',
                 '--icon-color': isDarkTheme ? '#ffffff' : '#000000',
-                '--hover-bg': isDarkTheme ? '#333333' : '#e0e0e0',
             }}
         >
-            <nav
-                ref={navRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-            >
+            <nav ref={navRef}>
                 {navItems.map((item, index) =>
                     item.type === 'separator' ? (
                         <div key={item.id} className="separator" />
                     ) : (
                         <div
                             key={item.id}
+                            ref={(el) => (itemsRef.current[index] = el)}
                             className="nav-item"
-                            style={{
-                                '--scale': getScale(index),
+                            onMouseEnter={() => {
+                                setShowTooltip(item.id);
+                                focusIcon(index);
                             }}
-                            onMouseEnter={() => setShowTooltip(item.id)}
-                            onMouseLeave={() => setShowTooltip('')}
+                            onMouseLeave={() => {
+                                setShowTooltip('');
+                                resetIcons();
+                            }}
                             onClick={() =>
                                 item.id === 'theme'
                                     ? toggleTheme()
