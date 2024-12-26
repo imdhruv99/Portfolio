@@ -18,6 +18,14 @@ const OrbitScene = ({ isDarkTheme }) => {
         group: null,
     });
 
+    // Helper function to generate pastel colors
+    const getRandomPastelColor = () => {
+        const r = Math.random() * 0.5 + 0.5; // Red: 50% - 100%
+        const g = Math.random() * 0.5 + 0.5; // Green: 50% - 100%
+        const b = Math.random() * 0.5 + 0.5; // Blue: 50% - 100%
+        return new THREE.Color(r, g, b);
+    };
+
     useEffect(() => {
         const { scene, camera, renderer } = worldRef.current;
         const container = sceneRef.current;
@@ -30,17 +38,16 @@ const OrbitScene = ({ isDarkTheme }) => {
         scene.fog = new THREE.FogExp2(0xcccccc, 0.002);
 
         const geometry = new THREE.DodecahedronGeometry(3, 0);
-        const material = new THREE.MeshPhongMaterial({
-            color: isDarkTheme ? 0xffffff : 0x141414,
+        materialRef.current = new THREE.MeshPhongMaterial({
+            color: getRandomPastelColor(), // Use pastel colors here
             flatShading: true,
         });
-        materialRef.current = material;
 
         const group = new THREE.Group();
         worldRef.current.group = group;
 
         for (let i = 0; i < 50; i++) {
-            const mesh = new THREE.Mesh(geometry, material);
+            const mesh = new THREE.Mesh(geometry, materialRef.current);
             mesh.position.x = Math.random() * 1000 - 500;
             mesh.position.y = Math.random() * 600 - 300;
             mesh.position.z = Math.random() * 1000 - 200;
@@ -102,7 +109,7 @@ const OrbitScene = ({ isDarkTheme }) => {
 
     useEffect(() => {
         if (materialRef.current) {
-            materialRef.current.color.setHex(isDarkTheme ? 0xffffff : 0x141414);
+            materialRef.current.color.set(getRandomPastelColor());
             worldRef.current.renderer.render(
                 worldRef.current.scene,
                 worldRef.current.camera,
