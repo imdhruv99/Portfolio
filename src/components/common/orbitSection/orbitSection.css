@@ -1,0 +1,28 @@
+.orbitSection {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.orbitSection .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.orbitSection .title {
+    font-size: clamp(3rem, 8vw, 11rem);
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.orbitSection .subtitle {
+    font-size: clamp(1rem, 2vw, 2rem);
+    margin: 1rem 0;
+}

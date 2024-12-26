@@ -1,6 +1,8 @@
 .home-page {
-    min-height: 100vh;
-    padding: 2rem;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: auto;
     transition: all 0.3s ease;
 }
 

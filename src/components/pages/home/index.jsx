@@ -1,6 +1,7 @@
 import './home.css';
 
 import { useTheme } from '../../context/ThemeContext';
+import OrbitSection from '../../common/orbitSection';
 
 const Home = () => {
     const { isDarkTheme } = useTheme();
@@ -9,7 +10,7 @@ const Home = () => {
         <div
             className={`home-page ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}
         >
-            <h1>Home</h1>
+            <OrbitSection isDarkTheme={isDarkTheme} />
         </div>
     );
 };
