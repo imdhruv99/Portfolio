@@ -18,11 +18,10 @@ const OrbitScene = ({ isDarkTheme }) => {
         group: null,
     });
 
-    // Helper function to generate pastel colors
     const getRandomPastelColor = () => {
-        const r = Math.random() * 0.5 + 0.5; // Red: 50% - 100%
-        const g = Math.random() * 0.5 + 0.5; // Green: 50% - 100%
-        const b = Math.random() * 0.5 + 0.5; // Blue: 50% - 100%
+        const r = Math.random() * 0.5 + 0.5;
+        const g = Math.random() * 0.5 + 0.5;
+        const b = Math.random() * 0.5 + 0.5;
         return new THREE.Color(r, g, b);
     };
 
@@ -39,7 +38,7 @@ const OrbitScene = ({ isDarkTheme }) => {
 
         const geometry = new THREE.DodecahedronGeometry(3, 0);
         materialRef.current = new THREE.MeshPhongMaterial({
-            color: getRandomPastelColor(), // Use pastel colors here
+            color: getRandomPastelColor(),
             flatShading: true,
         });
 
