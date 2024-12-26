@@ -1,6 +1,7 @@
 import './footer.css';
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import {
     House,
     Briefcase,
@@ -55,7 +56,7 @@ const navItems = [
 
 const Footer = () => {
     const [showTooltip, setShowTooltip] = useState('');
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
+    const { isDarkTheme, toggleTheme } = useTheme();
     const navRef = useRef(null);
     const itemsRef = useRef([]);
     const navigate = useNavigate();
@@ -85,11 +86,6 @@ const Footer = () => {
                 item.style.transform = `scale(${scale}) translateY(${translateY}px)`;
             }
         });
-    };
-
-    const toggleTheme = () => {
-        setIsDarkTheme(!isDarkTheme);
-        document.body.classList.toggle('dark-theme');
     };
 
     const handleNavigation = (path) => {

@@ -1,0 +1,15 @@
+.projects-page {
+    min-height: 100vh;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.projects-page.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.projects-page.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}

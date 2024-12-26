@@ -1,0 +1,15 @@
+.contact-page {
+    min-height: 100vh;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.contact-page.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.contact-page.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}

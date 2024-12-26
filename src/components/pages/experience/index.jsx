@@ -1,7 +1,17 @@
 import './experience.css';
 
+import { useTheme } from '../../context/ThemeContext';
+
 const Experience = () => {
-    return <div className="experience-page">Experience Page</div>;
+    const { isDarkTheme } = useTheme();
+
+    return (
+        <div
+            className={`experience-page ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}
+        >
+            <h1>Experience</h1>
+        </div>
+    );
 };
 
 export default Experience;
