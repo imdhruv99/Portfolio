@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 const OrbitScene = ({ isDarkTheme }) => {
     const sceneRef = useRef(null);
     const materialRef = useRef(null);
+    const starFieldRef = useRef(null);
     const worldRef = useRef({
         scene: new THREE.Scene(),
         camera: new THREE.PerspectiveCamera(
             45,
             window.innerWidth / window.innerHeight,
             1,
-            10000,
+            10000
         ),
         renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
         group: null,
@@ -23,6 +24,38 @@ const OrbitScene = ({ isDarkTheme }) => {
         const g = Math.random() * 0.5 + 0.5;
         const b = Math.random() * 0.5 + 0.5;
         return new THREE.Color(r, g, b);
+    };
+
+    const createStarField = () => {
+        const starCount = 5000; // Number of stars
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(starCount * 3);
+        const colors = new Float32Array(starCount * 3);
+
+        for (let i = 0; i < starCount; i++) {
+            // Random positions
+            positions[i * 3] = Math.random() * 2000 - 1000;
+            positions[i * 3 + 1] = Math.random() * 2000 - 1000;
+            positions[i * 3 + 2] = Math.random() * 2000 - 1000;
+
+            // Random colors
+            const color = getRandomPastelColor();
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 2,
+            vertexColors: true,
+            transparent: true,
+        });
+
+        const stars = new THREE.Points(geometry, material);
+        return stars;
     };
 
     useEffect(() => {
@@ -56,6 +89,10 @@ const OrbitScene = ({ isDarkTheme }) => {
         }
         scene.add(group);
 
+        const starField = createStarField();
+        scene.add(starField);
+        starFieldRef.current = starField;
+
         const lights = [
             new THREE.DirectionalLight(0xffffff, 1),
             new THREE.DirectionalLight(0x141414, 1),
@@ -69,6 +106,8 @@ const OrbitScene = ({ isDarkTheme }) => {
         const animate = () => {
             group.rotation.x += 0.0002;
             group.rotation.y += 0.0002;
+            starField.rotation.x += 0.00005;
+            starField.rotation.y += 0.00005;
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         };
@@ -111,8 +150,19 @@ const OrbitScene = ({ isDarkTheme }) => {
             materialRef.current.color.set(getRandomPastelColor());
             worldRef.current.renderer.render(
                 worldRef.current.scene,
-                worldRef.current.camera,
+                worldRef.current.camera
             );
+        }
+
+        // Adjust star colors based on the theme
+        if (starFieldRef.current) {
+            const starMaterial = starFieldRef.current.material;
+            if (isDarkTheme) {
+                starMaterial.size = 2;
+            } else {
+                starMaterial.size = 1.5;
+            }
+            starFieldRef.current.material = starMaterial;
         }
     }, [isDarkTheme]);
 
