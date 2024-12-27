@@ -104,7 +104,7 @@ const Footer = () => {
             style={{
                 '--tooltip-bg': isDarkTheme ? '#2a2a2a' : '#ffffff',
                 '--tooltip-text': isDarkTheme ? '#ffffff' : '#000000',
-                '--nav-bg': isDarkTheme ? '#1a1a1a' : '#f5f5f5',
+                '--nav-bg': isDarkTheme ? '#222222' : '#fcfcfc',
                 '--icon-color': isDarkTheme ? '#ffffff' : '#000000',
             }}
         >
