@@ -12,6 +12,9 @@
     },
     "dependencies": {
         "@phosphor-icons/react": "^2.1.7",
+        "@react-spring/three": "^9.7.5",
+        "@react-three/drei": "^9.120.4",
+        "@react-three/fiber": "^8.17.10",
         "@swc/core": "^1.10.1",
         "@vitejs/plugin-react": "^4.3.4",
         "gsap": "^3.12.5",

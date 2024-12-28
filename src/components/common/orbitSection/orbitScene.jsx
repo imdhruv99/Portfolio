@@ -13,7 +13,7 @@ const OrbitScene = ({ isDarkTheme }) => {
             45,
             window.innerWidth / window.innerHeight,
             1,
-            10000
+            10000,
         ),
         renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
         group: null,
@@ -45,7 +45,10 @@ const OrbitScene = ({ isDarkTheme }) => {
             colors[i * 3 + 2] = color.b;
         }
 
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute(
+            'position',
+            new THREE.BufferAttribute(positions, 3),
+        );
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         const material = new THREE.PointsMaterial({
@@ -150,7 +153,7 @@ const OrbitScene = ({ isDarkTheme }) => {
             materialRef.current.color.set(getRandomPastelColor());
             worldRef.current.renderer.render(
                 worldRef.current.scene,
-                worldRef.current.camera
+                worldRef.current.camera,
             );
         }
 

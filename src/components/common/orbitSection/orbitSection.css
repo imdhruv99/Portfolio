@@ -22,13 +22,11 @@
     overflow: hidden;
 }
 
-.left-image {
-    max-width: 100%;
-    height: 80%;
-    object-fit: cover;
-    border-radius: 5%;
+.avtar-canvas {
+    align-items: center;
+    justify-content: center;
+    margin-top: 20rem;
 }
-
 
 .content-right {
     display: flex;
