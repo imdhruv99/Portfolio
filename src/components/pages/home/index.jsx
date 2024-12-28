@@ -21,12 +21,13 @@ const Home = () => {
                             className="avtar-canvas"
                         >
                             <Avtar isDarkTheme={isDarkTheme} />
-                            <ambientLight intensity={isDarkTheme ? 4 : 6} />
+                            <ambientLight intensity={isDarkTheme ? 4 : 7} />
                         </Canvas>
                     </div>
                     <div className="content-right">
+                        <p className="description">Hello, The Name is </p>
                         <h1 className="title">DHRUV PRAJAPATI</h1>
-                        <p className="subtitle">Software Engineer</p>
+                        <p className="subtitle">Senior Software Engineer</p>
                         <p className="description">
                             I craft intelligent, data-driven experiences -
                             blending full-stack expertise with AI innovation.

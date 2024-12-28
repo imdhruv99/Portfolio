@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGraph } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
 
+// model paths
 import darkModeAvtar from '../../../assets/models/darkModeAvtar.glb';
 import lightModeAvtar from '../../../assets/models/lightModeAvtar.glb';
 
+// animation paths
+import greetingAnimationEffect from '../../../assets/animations/Greeting.fbx';
+
 const Avtar = ({ isDarkTheme, ...props }) => {
+    const avtarGroup = useRef();
+
+    // conditionally loading models
     const { scene } = useGLTF(isDarkTheme ? darkModeAvtar : lightModeAvtar);
+
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
     const { nodes, materials } = useGraph(clone);
+
+    // adding animations and renaming
+    const { animations: greetingAnimation } = useFBX(greetingAnimationEffect);
+    greetingAnimation[0].name = 'Greeting';
+    console.log('Greeting Animation Name:', greetingAnimation);
+    const { actions } = useAnimations(greetingAnimation, avtarGroup);
+
+    useEffect(() => {
+        actions['Greeting'].reset().play();
+    }, [actions]);
+
     return (
-        <group {...props} dispose={null}>
+        <group {...props} dispose={null} ref={avtarGroup}>
             <primitive object={nodes.Hips} />
             <skinnedMesh
                 geometry={nodes.Wolf3D_Hair.geometry}

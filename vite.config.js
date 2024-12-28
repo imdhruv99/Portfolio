@@ -7,5 +7,5 @@ export default defineConfig({
             jsx: 'react',
         }),
     ],
-    assetsInclude: ['**/*.glb'],
+    assetsInclude: ['**/*.glb', '**/*.fbx'],
 });
