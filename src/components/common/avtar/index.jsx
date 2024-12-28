@@ -3,10 +3,11 @@ import { useGraph } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
 
-import avtarModel from "../../../assets/models/my_3d_model.glb";
+import darkModeAvtar from '../../../assets/models/darkModeAvtar.glb';
+import lightModeAvtar from '../../../assets/models/lightModeAvtar.glb';
 
-const Avtar = (props) => {
-    const { scene } = useGLTF(avtarModel);
+const Avtar = ({ isDarkTheme, ...props }) => {
+    const { scene } = useGLTF(isDarkTheme ? darkModeAvtar : lightModeAvtar);
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
     const { nodes, materials } = useGraph(clone);
     return (
@@ -76,8 +77,9 @@ const Avtar = (props) => {
             />
         </group>
     );
-}
+};
 
 export default Avtar;
 
-useGLTF.preload(avtarModel);
+useGLTF.preload(darkModeAvtar);
+useGLTF.preload(lightModeAvtar);
