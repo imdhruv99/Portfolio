@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useGraph } from '@react-three/fiber';
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
@@ -12,22 +12,55 @@ import greetingAnimationEffect from '../../../assets/animations/Greeting.fbx';
 
 const Avtar = ({ isDarkTheme, ...props }) => {
     const avtarGroup = useRef();
+    const animationRef = useRef(null);
+    const [isFirstMount, setIsFirstMount] = useState(true);
 
-    // conditionally loading models
+    // Load the model based on theme
     const { scene } = useGLTF(isDarkTheme ? darkModeAvtar : lightModeAvtar);
-
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
     const { nodes, materials } = useGraph(clone);
 
-    // adding animations and renaming
+    // Load animation
     const { animations: greetingAnimation } = useFBX(greetingAnimationEffect);
     greetingAnimation[0].name = 'Greeting';
 
     const { actions } = useAnimations(greetingAnimation, avtarGroup);
 
+    // Handle initial mount animation
     useEffect(() => {
-        actions['Greeting'].reset().play();
-    }, [actions]);
+        if (isFirstMount && actions.Greeting) {
+            // Play from mid-point of animation (standing position)
+            actions.Greeting.reset();
+            actions.Greeting.time = actions.Greeting._clip.duration / 2;
+            actions.Greeting.play();
+
+            // Set flag to false after initial mount
+            setIsFirstMount(false);
+        }
+    }, [actions, isFirstMount]);
+
+    // Handle theme change animations
+    useEffect(() => {
+        if (!isFirstMount && actions.Greeting) {
+            if (animationRef.current) {
+                animationRef.current.stop();
+            }
+
+            // Play greeting animation from standing position
+            actions.Greeting.reset();
+            actions.Greeting.time = actions.Greeting._clip.duration / 2;
+            actions.Greeting.play();
+            animationRef.current = actions.Greeting;
+        }
+
+        return () => {
+            if (animationRef.current) {
+                animationRef.current.stop();
+            }
+        };
+    }, [actions, isDarkTheme, isFirstMount]);
+
+    if (!nodes || !materials) return null;
 
     return (
         <group {...props} dispose={null} ref={avtarGroup}>

@@ -1,8 +1,10 @@
 import './home.css';
 
 import { useTheme } from '../../context/ThemeContext';
-import OrbitScene from '../../common/orbitSection/orbitScene';
 import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+
+import OrbitScene from '../../common/orbitSection/orbitScene';
 import Avtar from '../../common/avtar';
 
 const Home = () => {
@@ -20,8 +22,13 @@ const Home = () => {
                             camera={{ position: [-2, 2, 7], fov: 30 }}
                             className="avtar-canvas"
                         >
-                            <Avtar isDarkTheme={isDarkTheme} />
-                            <ambientLight intensity={isDarkTheme ? 4 : 7} />
+                            <Suspense fallback={null}>
+                                <Avtar
+                                    key={isDarkTheme ? 'dark' : 'light'}
+                                    isDarkTheme={isDarkTheme}
+                                />
+                                <ambientLight intensity={isDarkTheme ? 4 : 7} />
+                            </Suspense>
                         </Canvas>
                     </div>
                     <div className="content-right">
