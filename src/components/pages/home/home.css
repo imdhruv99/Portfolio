@@ -44,7 +44,7 @@
 .avtar-canvas {
     align-items: center;
     justify-content: center;
-    margin-top: 20rem;
+    margin-top: 25rem;
 }
 
 .content-right {
@@ -81,6 +81,7 @@
         align-items: center;
         text-align: center;
         margin-top: 10vh;
+        margin-bottom: 10vh
     }
 }
 

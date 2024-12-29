@@ -36,8 +36,9 @@ const Home = () => {
                         <h1 className="title">DHRUV PRAJAPATI</h1>
                         <p className="subtitle">Senior Software Engineer</p>
                         <p className="description">
-                            I craft intelligent, data-driven experiences -
-                            blending full-stack expertise with AI innovation.
+                            A highly motivated engineer dedicated to mastering
+                            complex technical topics and committed to daily
+                            learning and improvement.
                         </p>
                     </div>
                 </div>
