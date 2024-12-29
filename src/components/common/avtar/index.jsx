@@ -48,7 +48,7 @@ const Avtar = ({ isDarkTheme, ...props }) => {
 
             // Play greeting animation from standing position
             actions.Greeting.reset();
-            actions.Greeting.time = actions.Greeting._clip.duration / 2;
+            actions.Greeting.time = actions.Greeting._clip.duration;
             actions.Greeting.play();
             animationRef.current = actions.Greeting;
         }
