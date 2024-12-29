@@ -1,6 +1,11 @@
 import './home.css';
 
 import { useTheme } from '../../context/ThemeContext';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+
+import OrbitScene from '../../common/orbitSection/orbitScene';
+import Avtar from '../../common/avtar';
 
 const Home = () => {
     const { isDarkTheme } = useTheme();
@@ -9,7 +14,36 @@ const Home = () => {
         <div
             className={`home-page ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}
         >
-            <h1>Home</h1>
+            <section className="orbitSection">
+                <div className="grid-container">
+                    <div className="content-left">
+                        <Canvas
+                            shadows
+                            camera={{ position: [-2, 2, 7], fov: 30 }}
+                            className="avtar-canvas"
+                        >
+                            <Suspense fallback={null}>
+                                <Avtar
+                                    key={isDarkTheme ? 'dark' : 'light'}
+                                    isDarkTheme={isDarkTheme}
+                                />
+                                <ambientLight intensity={isDarkTheme ? 4 : 7} />
+                            </Suspense>
+                        </Canvas>
+                    </div>
+                    <div className="content-right">
+                        <p className="description">Hello, The Name is </p>
+                        <h1 className="title">DHRUV PRAJAPATI</h1>
+                        <p className="subtitle">Senior Software Engineer</p>
+                        <p className="description">
+                            A highly motivated engineer dedicated to mastering
+                            complex technical topics and committed to daily
+                            learning and improvement.
+                        </p>
+                    </div>
+                </div>
+                <OrbitScene isDarkTheme={isDarkTheme} />
+            </section>
         </div>
     );
 };
